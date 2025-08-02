@@ -1,0 +1,97 @@
+GET http://localhost:3000/users/status
+
+###
+GET http://localhost:3000/users
+
+### 
+GET http://localhost:3000/users/a3d0fee0-8a0c-4cbf-93c0-ed3d0057218f
+
+### 
+GET http://localhost:3000/users/byname/fer
+
+###
+POST http://localhost:3000/users
+Content-Type: application/json
+
+{
+  "name": "Hugo",
+  "creditCardNumber": "123456789",
+  "email": "hugo@web.ufop.edu.br",
+  "password": "123456"
+}
+
+###
+POST http://localhost:3000/users
+Content-Type: application/json
+
+{
+  "name": "Sofia",
+  "creditCardNumber": "123456710",
+  "email": "sofia@web.ufop.edu.br",
+  "password": "321654"
+}
+
+###
+POST http://localhost:3000/users
+Content-Type: application/json
+
+{
+  "name": "Ana",
+  "creditCardNumber": "123456711",
+  "email": "ana@web.ufop.edu.br",
+  "password": "789456"
+}
+
+###
+POST http://localhost:3000/users
+Content-Type: application/json
+
+{
+  "name": "Gabriel",
+  "creditCardNumber": "123456712",
+  "email": "gabriel@web.ufop.edu.br",
+  "password": "741852"
+}
+
+
+###
+PUT http://localhost:3000/users
+Content-Type: application/json
+
+{
+  "id": "02c95281-bfa8-4859-93dc-1508ed511901",
+  "name": "Hugo Oliveira",
+  "creditCardNumber": "9876543221",
+  "email": "hugo@web.ufop.edu.br",
+  "password": "123456"
+}
+
+###
+PUT http://localhost:3000/users/password
+Content-Type: application/json
+
+{
+  "id": "02c95281-bfa8-4859-93dc-1508ed511901",
+  "email": "hugo@web.ufop.edu.br",
+  "old_password": "123456",
+  "new_password": "654321"
+}
+
+###
+DELETE http://localhost:3000/users/remove
+Content-Type: application/json
+
+{
+  "id": "02c9521-bf08-1859-93dc-1-508ed511901"
+}
+
+###
+GET http://localhost:3000/ccn
+
+###
+POST http://localhost:3000/ccn
+Content-Type: application/json
+
+{
+  "name": "American Express"
+}

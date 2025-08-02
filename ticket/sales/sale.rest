@@ -1,0 +1,155 @@
+GET http://localhost:4000/sales/status
+
+###
+GET http://localhost:4000/events/status
+
+
+
+###
+POST http://localhost:4000/events
+Content-Type: application/json
+
+{
+    "type": "SHOW",
+    "description": "Show da 'AnaVitória'",
+    "date": "2025-12-25T20:00:00",
+    "startSales": "2025-10-01T09:00:00",
+    "endSales": "2025-12-24T23:59:59",
+    "price": 150.75
+}
+
+###
+POST http://localhost:4000/events
+Content-Type: application/json
+
+{
+    "type": "SHOW",
+    "description": "Show do 'Harry Styles'",
+    "date": "2026-03-08T20:00:00",
+    "startSales": "2025-12-01T09:00:00",
+    "endSales": "2026-03-08T19:59:59",
+    "price": 250.50
+}
+
+###
+POST http://localhost:4000/events
+Content-Type: application/json
+
+{
+    "type": "SHOW",
+    "description": "Show do 'Capital Inicial'",
+    "date": "2025-10-13T20:00:00",
+    "startSales": "2025-08-01T09:00:00",
+    "endSales": "2025-10-12T23:59:59",
+    "price": 110.80
+}
+
+###
+GET http://localhost:4000/events
+
+###
+GET http://localhost:4000/events/8d5a18e2-3bd4-4a8e-b268-e45a0fad60d9
+//Content-Type: application/json
+
+//{
+//    "id": "a537a337-7944-4e19-bce4-8b4453c54aaf"
+//}
+
+###
+PUT http://localhost:4000/events
+Content-Type: application/json
+
+{
+    "id": "64a4806f-0e5f-4659-b7b3-31204590bf9e",
+    "type": "SHOW",
+    "description": "Show do 'Capital Inicial'",
+    "date": "2025-10-13T20:00:00",
+    "startSales": "2025-08-01T09:00:00",
+    "endSales": "2025-10-12T23:59:59",
+    "price": 130.80
+}
+
+###
+DELETE http://localhost:4000/events/remove
+Content-Type: application/json
+
+{
+  "id": "64a4806f-0e5f-4659-b7b3-31204590bf9e"
+}
+
+
+###
+POST http://localhost:4000/sales
+Content-Type: application/json
+
+{
+    "userId": "56b16708-fc75-437d-b85e-20b39e2c5655",
+    "eventId": "a23a0ff8-2b66-47f5-8ec0-890a809446aa",
+    "saleStatus": "EM_ABERTO"
+}
+
+###
+POST http://localhost:4000/sales
+Content-Type: application/json
+
+{
+    "userId": "6f7e093d-99cb-4b17-8da9-7d55830443af",
+    "eventId": "5e71aa79-0eca-4b83-87c1-f121607abb53",
+    "saleStatus": "PAGO"
+}
+
+###
+POST http://localhost:4000/sales
+Content-Type: application/json
+
+{
+    "userId": "62902f16-176e-41d2-a285-270e36f9266a",
+    "eventId": "de074fc7-e8e8-4517-b0c1-baee7fe6457a",
+    "saleStatus": "CANCELADO"
+}
+
+###
+POST http://localhost:4000/sales
+Content-Type: application/json
+
+{
+    "userId": "15ecba45-330c-4ac3-bc6a-8a9533d70a56",
+    "eventId": "de074fc7-e8e8-4517-b0c1-baee7fe6457a",
+    "saleStatus": "ESTORNADO"
+}
+
+###
+POST http://localhost:4000/sales
+Content-Type: application/json
+
+{
+    "userId": "15ecba45-330c-4ac3-bc6a-8a9533d70a56",
+    "eventId": "5e71aa79-0eca-4b83-87c1-f121607abb53"
+}
+
+###
+GET http://localhost:4000/sales
+
+###
+GET http://localhost:4000/sales/7e8e5384-040b-40e0-af7b-d1feeda2c9d6
+#Content-Type: application/json
+
+#{
+#    "id": "7e8e5384-040b-40e0-af7b-d1feeda2c9d6"
+#}
+
+###
+GET http://localhost:4000/sales/user/6f7e093d-99cb-4b17-8da9-7d55830443af
+#Content-Type: application/json
+
+#{
+#    "userId": "6f7e093d-99cb-4b17-8da9-7d55830443af"
+#}
+
+###
+DELETE http://localhost:4000/sales/remove
+Content-Type: application/json
+
+{
+  "id": "9dc64c35-b271-415a-8ba7-9a3cdfa7a033"
+}
