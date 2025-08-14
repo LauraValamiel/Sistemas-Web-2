@@ -15,11 +15,14 @@ import br.edu.ufop.web.ticket.sales.dtos.CreateSaleDTO;
 import br.edu.ufop.web.ticket.sales.dtos.DeleteSaleDTO;
 import br.edu.ufop.web.ticket.sales.dtos.SaleDTO;
 import br.edu.ufop.web.ticket.sales.dtos.UpdateSaleDTO;
+import br.edu.ufop.web.ticket.sales.dtos.externals.notifications.CreateNotificationDTO;
+import br.edu.ufop.web.ticket.sales.dtos.externals.notifications.NotificationDTO;
 import br.edu.ufop.web.ticket.sales.enums.EnumSalesType;
 import br.edu.ufop.web.ticket.sales.models.EventModel;
 import br.edu.ufop.web.ticket.sales.models.SaleModel;
 import br.edu.ufop.web.ticket.sales.repositories.IEventRepository;
 import br.edu.ufop.web.ticket.sales.repositories.ISaleRepository;
+import br.edu.ufop.web.ticket.sales.service.clients.NotificationServiceClient;
 import lombok.AllArgsConstructor;
 
 @Service
@@ -29,6 +32,8 @@ public class SaleService {
     private final ISaleRepository saleRepository;
 
     private final IEventRepository eventRepository;
+
+    private final NotificationServiceClient notificationServiceClient;
 
     public List<SaleDTO> getAllSales() {
         
@@ -67,8 +72,11 @@ public class SaleService {
         }
 
         SaleModel saleModel = SaleConverter.toSaleModel(saleDomain);
+
+        saleModel = saleRepository.save(saleModel);
+        sendNotification(saleModel);
         
-        return SaleConverter.toSaleDTO(saleRepository.save(saleModel));
+        return SaleConverter.toSaleDTO(saleModel);
     }
 
     public SaleDTO updateSale(UpdateSaleDTO updateSaleDTO) {
@@ -95,6 +103,22 @@ public class SaleService {
         }   
 
         saleRepository.delete(optionalSaleModel.get());
+
+    }
+
+    private void sendNotification(SaleModel saleModel) {
+
+        CreateNotificationDTO createNotificationDTO = new CreateNotificationDTO( saleModel.getUserId(),
+            "SALES",
+            "MESSAGE",
+            "Ticket sales",
+            "Event " + saleModel.getEventId().getDescription()
+        );
+
+        NotificationDTO notificationDTO = notificationServiceClient.create(createNotificationDTO);
+
+        System.out.println(notificationDTO);
+
     }
 
 }

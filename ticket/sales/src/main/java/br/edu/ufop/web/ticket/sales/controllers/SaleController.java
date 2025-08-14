@@ -16,7 +16,7 @@ import br.edu.ufop.web.ticket.sales.dtos.CreateSaleDTO;
 import br.edu.ufop.web.ticket.sales.dtos.DeleteSaleDTO;
 import br.edu.ufop.web.ticket.sales.dtos.SaleDTO;
 import br.edu.ufop.web.ticket.sales.dtos.UpdateSaleDTO;
-import br.edu.ufop.web.ticket.sales.dtos.UserDTO;
+import br.edu.ufop.web.ticket.sales.dtos.externals.users.UserDTO;
 import br.edu.ufop.web.ticket.sales.service.SaleService;
 import br.edu.ufop.web.ticket.sales.service.clients.UserServiceClient;
 import lombok.AllArgsConstructor;

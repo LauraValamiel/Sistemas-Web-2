@@ -1,16 +1,13 @@
 import './App.css'
-import ListUsers from './components/users/ListUsers'
+import StoreProvider from './components/Provider'
+import { AppRoutes } from './routes'
 
 function App() {
 
   return (
-    <>
-    <h1>Sistemas de vendas de tickets</h1>
-    <div>
-        <ListUsers />
-    </div>
-      
-    </>
+    <StoreProvider>
+      <AppRoutes />
+    </StoreProvider>
   )
 }
 

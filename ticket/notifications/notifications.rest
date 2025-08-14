@@ -1,0 +1,13 @@
+POST http://localhost:5000/notifications
+Content-Type: application/json
+
+{
+    "userId": "6f7e093d-99cb-4b17-8da9-7d55830443af",
+    "service": "notifications-service",
+    "notificationType": 0,
+    "subject": "Teste de gravação de mensagem",
+    "content": "Primeira mensagem enviada ao serviço de notificação para teste de gravação."
+}
+
+###
+GET http://localhost:5000/notifications 
