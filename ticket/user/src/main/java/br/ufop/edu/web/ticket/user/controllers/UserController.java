@@ -51,7 +51,7 @@ public class UserController {
     @GetMapping("/{userId}")
     public ResponseEntity<SimpleUserRecordDTO> getUserById(@PathVariable("userId") UUID id) {
 
-        SimpleUserRecordDTO simpleUserRecordDTO = userService.getUserById(id);
+        SimpleUserRecordDTO simpleUserRecordDTO = userService.getUserById(id.toString());
 
         return simpleUserRecordDTO != null ? ResponseEntity.ok(simpleUserRecordDTO) : ResponseEntity.notFound().build();
 

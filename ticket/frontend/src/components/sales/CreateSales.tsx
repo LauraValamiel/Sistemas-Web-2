@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import api from '../../services/api';
+import { useNavigate } from 'react-router-dom';
 
 interface EventInterface {
     id: string,
@@ -25,6 +26,7 @@ interface SaleInterface {
 }
 
 const CreateSales = () => {
+    const navigate = useNavigate();
     const [events, setEvents] = useState([]);
     const [users, setUsers] = useState([]);
     const [selectedEvent, setSelectedEvent] = useState('');
@@ -93,14 +95,15 @@ const CreateSales = () => {
         console.log("Dados enviados:", dados);
 
         try {
-            const response = await api('/sales/createSales', {
+            await api('/sales/createSales', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify(dados),
             });
-            console.log('Venda criada com sucesso:', response);
+            alert('Venda criada com sucesso:');
+            navigate('/sales/sales-list');
         }catch (error) {
             console.error('Erro ao criar venda:', error);
         }
