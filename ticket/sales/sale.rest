@@ -45,10 +45,10 @@ Content-Type: application/json
 }
 
 ###
-GET http://localhost:4000/events
+GET http://localhost:4000/events/events-list
 
 ###
-GET http://localhost:4000/events/8d5a18e2-3bd4-4a8e-b268-e45a0fad60d9
+GET http://localhost:4000/events/5e71aa79-0eca-4b83-87c1-f121607abb53
 //Content-Type: application/json
 
 //{
@@ -79,13 +79,13 @@ Content-Type: application/json
 
 
 ###
-POST http://localhost:4000/sales
+POST http://localhost:4000/sales/createSales
 Content-Type: application/json
 
 {
-    "userId": "56b16708-fc75-437d-b85e-20b39e2c5655",
+    "userId": "7e01fb77-c78f-4cdc-a957-97fbdde06f31",
     "eventId": "a23a0ff8-2b66-47f5-8ec0-890a809446aa",
-    "saleStatus": "EM_ABERTO"
+    "saleStatus": 2
 }
 
 ###
@@ -93,7 +93,7 @@ POST http://localhost:4000/sales
 Content-Type: application/json
 
 {
-    "userId": "6f7e093d-99cb-4b17-8da9-7d55830443af",
+    "userId": "ca9d5b73-411a-43bd-b84c-78e97803c19c",
     "eventId": "5e71aa79-0eca-4b83-87c1-f121607abb53",
     "saleStatus": "PAGO"
 }
@@ -103,7 +103,7 @@ POST http://localhost:4000/sales
 Content-Type: application/json
 
 {
-    "userId": "62902f16-176e-41d2-a285-270e36f9266a",
+    "userId": "81e1e18a-5d05-49c7-bdc4-9fac477dfd98",
     "eventId": "de074fc7-e8e8-4517-b0c1-baee7fe6457a",
     "saleStatus": "CANCELADO"
 }
@@ -113,7 +113,7 @@ POST http://localhost:4000/sales
 Content-Type: application/json
 
 {
-    "userId": "15ecba45-330c-4ac3-bc6a-8a9533d70a56",
+    "userId": "42552531-d645-446d-b10c-737e34bd3cad",
     "eventId": "de074fc7-e8e8-4517-b0c1-baee7fe6457a",
     "saleStatus": "ESTORNADO"
 }
@@ -123,12 +123,12 @@ POST http://localhost:4000/sales
 Content-Type: application/json
 
 {
-    "userId": "15ecba45-330c-4ac3-bc6a-8a9533d70a56",
+    "userId": "42552531-d645-446d-b10c-737e34bd3cad",
     "eventId": "5e71aa79-0eca-4b83-87c1-f121607abb53"
 }
 
 ###
-GET http://localhost:4000/sales
+GET http://localhost:4000/sales/sales-list
 
 ###
 GET http://localhost:4000/sales/7e8e5384-040b-40e0-af7b-d1feeda2c9d6
@@ -151,5 +151,5 @@ DELETE http://localhost:4000/sales/remove
 Content-Type: application/json
 
 {
-  "id": "9dc64c35-b271-415a-8ba7-9a3cdfa7a033"
+  "id": "0b53a4e2-758f-4601-8a93-12fca13ba4e4"
 }

@@ -20,7 +20,7 @@ public class SaleDomain {
 
     private UUID id;
     
-    private EventModel eventId;
+    private UUID event;
 
     private UUID userId;
     

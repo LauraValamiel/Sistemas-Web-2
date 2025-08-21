@@ -1,0 +1,73 @@
+/* Estilos gerais de cartão */
+.card {
+    background-color: var(--color-card-bg);
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+/* Grid de eventos */
+.events-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.event-card {
+    padding: 20px;
+}
+
+.event-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 15px;
+}
+
+.event-card-header h3 {
+    margin: 0;
+    font-size: 1.2rem;
+}
+
+.event-card-description {
+    color: var(--color-text-secondary);
+    margin-bottom: 20px;
+}
+
+.event-card-details {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    color: var(--color-text-secondary);
+    margin-bottom: 20px;
+}
+.event-card-details p {
+    margin: 0;
+}
+
+
+.event-card-footer {
+    border-top: 1px solid var(--color-border);
+    padding-top: 15px;
+    margin-top: 15px;
+    text-align: right;
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
+/* Status Badge */
+.status {
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-weight: 600;
+    font-size: 0.8rem;
+    text-align: center;
+}
+.status.confirmada, .status.ativo {
+    color: var(--color-status-confirmed);
+    background-color: var(--color-status-confirmed-bg);
+}
+.status.pendente {
+    color: var(--color-status-pending);
+    background-color: var(--color-status-pending-bg);
+}

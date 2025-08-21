@@ -1,6 +1,9 @@
 package br.edu.ufop.web.ticket.sales.enums;
 
 import lombok.Getter;
+import java.util.Arrays;
+
+import com.fasterxml.jackson.annotation.JsonValue;
 
 @Getter
 public enum EnumSalesType {
@@ -9,7 +12,7 @@ public enum EnumSalesType {
     EM_ABERTO(1, "Em aberto"),
     PAGO(2, "Pago"),
     CANCELADO(3, "Cancelado"),
-    ESTORNADO(3, "Estornado");
+    ESTORNADO(4, "Estornado");
 
     //id - descrição
     private final Integer id;
@@ -19,5 +22,27 @@ public enum EnumSalesType {
         this.id = id;
         this.description = description;
     }
+
+    public static EnumSalesType fromId(Integer id) {
+        return Arrays.stream(values())
+                .filter(e -> e.id.equals(id))
+                .findFirst()
+                .orElseThrow(() -> new IllegalArgumentException("Invalid EnumSalesType id: " + id));
+    }
+
+    public static EnumSalesType fromCode(int code) {
+        for (EnumSalesType status : values()) {
+            if (status.getId() == code) {
+                return status;
+            }
+        }
+        throw new IllegalArgumentException("Código inválido para EnumSaleStatus: " + code);
+    }
+
+    @JsonValue
+    public Integer getId() {
+        return id;
+    }
+
 
 }

@@ -1,7 +1,7 @@
 package br.edu.ufop.web.ticket.sales.controllers;
 
 import java.util.List;
-
+import java.util.UUID;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
+import org.springframework.web.bind.annotation.*;
 import br.edu.ufop.web.ticket.sales.dtos.CreateSaleDTO;
 import br.edu.ufop.web.ticket.sales.dtos.DeleteSaleDTO;
 import br.edu.ufop.web.ticket.sales.dtos.SaleDTO;
@@ -41,7 +41,7 @@ public class SaleController {
         );
     }
 
-    @GetMapping
+    @GetMapping("/sales-list")
     public ResponseEntity<List<SaleDTO>> getAllSales() {
 
         List<SaleDTO> salesList = saleService.getAllSales();
@@ -49,17 +49,17 @@ public class SaleController {
         return ResponseEntity.ok(salesList);
     }
 
-    @PostMapping
+    @PostMapping("/createSales")
     public ResponseEntity<SaleDTO> createSale(@RequestBody CreateSaleDTO createSaleDTO) {
 
         SaleDTO saleDTO = saleService.createSale(createSaleDTO);
         return ResponseEntity.ok(saleDTO);
     }
 
-    @GetMapping("/{saleId}")
-    public ResponseEntity<SaleDTO> getSaleById(@PathVariable(value = "saleId") String saleId) {
+    @GetMapping("/{id}")
+    public ResponseEntity<SaleDTO> getSaleById(@PathVariable(value = "id") String id) {
 
-        SaleDTO saleDTO = saleService.getSaleById(saleId);
+        SaleDTO saleDTO = saleService.getSaleById(id);
 
         if (saleDTO == null) {
             return ResponseEntity.notFound().build();
@@ -68,19 +68,10 @@ public class SaleController {
         return ResponseEntity.ok(saleDTO);
     }
 
-    @GetMapping("/user/{userId}")
-    public ResponseEntity<List<SaleDTO>> getSalesByUserId(@PathVariable(value = "userId") String userId) {
+    @PutMapping("/{id}")
+    public ResponseEntity<SaleDTO> updateSaleStatus(@PathVariable("id") UUID id, @RequestBody UpdateSaleDTO updateSaleDTO) {
 
-        List<SaleDTO> salesList = saleService.getAllSales()
-            .stream()
-            .filter(sale -> sale.getUserId().toString().equals(userId))
-            .toList();
-
-        return ResponseEntity.ok(salesList);
-    }
-
-    @PutMapping("/saleStatus")
-    public ResponseEntity<SaleDTO> updateSaleStatus(@RequestBody UpdateSaleDTO updateSaleDTO) {
+        updateSaleDTO.setId(id);
 
         SaleDTO saleDTO = saleService.updateSale(updateSaleDTO);
 

@@ -12,7 +12,7 @@ import org.springframework.web.cors.reactive.UrlBasedCorsConfigurationSource;
 public class CorsApiConfig {
 
     @Bean
-    CorsWebFilter corsWebFilter(){
+    public CorsWebFilter corsWebFilter(){
 
         CorsConfiguration config = new CorsConfiguration();
 
@@ -20,6 +20,8 @@ public class CorsApiConfig {
         config.setAllowedOrigins(List.of("http://localhost:5173"));
         config.setAllowedHeaders(List.of("*"));
         config.setAllowedMethods(List.of("*"));
+        config.setMaxAge(3600L);
+
 
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         source.registerCorsConfiguration("/**", config);

@@ -3,7 +3,7 @@ import api from '../../services/api';
 
 interface UserInterface {
     id: string,
-    name: string,
+    fullName: string,
     email: string
 }
 
@@ -15,9 +15,8 @@ const ListUsers = () => {
     //Hook: useEffect
     useEffect(() => {
 
-        api('/api/users').then(response => {
-            console.log(response)
-            setUsers(response)
+        api('/users/users-list').then(response => {
+            setUsers(response.data)
         })
         .catch(error => console.error(error))
         
@@ -30,10 +29,10 @@ const ListUsers = () => {
             <h2>Lista de usuários</h2>
             <div>
                 {
-                    users.map( user => (
+                    users && users.map( user => (
                         <div>
                             <p>{user.id}</p>
-                            <p>{user.name}</p>
+                            <p>{user.fullName}</p>
                             <p>{user.email}</p>
                         </div>
                     ))

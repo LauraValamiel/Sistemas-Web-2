@@ -12,6 +12,9 @@ import lombok.NoArgsConstructor;
 public class UserConverter {
 
     public static SimpleUserRecordDTO toSimpleUserRecordDTO(UserModel userModel) {
+        if (userModel == null) {
+            return null;
+        }
         return new SimpleUserRecordDTO(
             userModel.getId(),
             userModel.getName(),

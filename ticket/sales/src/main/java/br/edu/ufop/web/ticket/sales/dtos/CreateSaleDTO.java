@@ -14,6 +14,6 @@ public class CreateSaleDTO {
 
     private UUID eventId;
 
-    private EnumSalesType saleStatus;
+    private Integer saleStatus;
 
 }

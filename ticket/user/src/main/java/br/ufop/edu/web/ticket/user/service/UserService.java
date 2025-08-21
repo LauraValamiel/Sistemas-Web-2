@@ -3,6 +3,7 @@ package br.ufop.edu.web.ticket.user.service;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
+import java.util.Objects;
 
 import org.springframework.stereotype.Service;
 
@@ -37,6 +38,7 @@ public class UserService {
 
         return userModelList
             .stream()
+            .filter(Objects::nonNull)
             .map(UserConverter::toSimpleUserRecordDTO)
             .toList();
 

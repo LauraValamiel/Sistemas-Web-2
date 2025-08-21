@@ -1,5 +1,8 @@
 package br.edu.ufop.web.ticket.sales.converter;
 
+import java.util.Collections;
+import java.util.stream.Collectors;
+
 import br.edu.ufop.web.ticket.sales.domain.EventDomain;
 import br.edu.ufop.web.ticket.sales.dtos.CreateEventDTO;
 import br.edu.ufop.web.ticket.sales.dtos.EventDTO;
@@ -11,17 +14,22 @@ import lombok.NoArgsConstructor;
 public class EventConverter {
 
     public static EventDTO toEventDTO(EventModel eventModel) {
-        return new EventDTO(
-            eventModel.getId(),
-            eventModel.getType(),
-            eventModel.getDescription(),
-            eventModel.getDate(),
-            eventModel.getStartSales(),
-            eventModel.getEndSales(),
-            eventModel.getPrice(),
-            eventModel.getCreatedAt(),
-            eventModel.getUpdatedAt()
-        );
+        if (eventModel == null) {
+            return null;
+        }
+
+        EventDTO eventDTO = new EventDTO();
+        eventDTO.setId(eventModel.getId());
+        eventDTO.setType(eventModel.getType());
+        eventDTO.setDescription(eventModel.getDescription());
+        eventDTO.setDate(eventModel.getDate());
+        eventDTO.setStartSales(eventModel.getStartSales());
+        eventDTO.setEndSales(eventModel.getEndSales());
+        eventDTO.setPrice(eventModel.getPrice());
+        eventDTO.setCreatedAt(eventModel.getCreatedAt());
+        eventDTO.setUpdatedAt(eventModel.getUpdatedAt());
+
+        return eventDTO;
 
     }
 

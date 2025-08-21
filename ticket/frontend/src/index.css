@@ -1,11 +1,46 @@
 :root {
+  font-family: 'Inter', system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  --color-background: #F4F7FE;
+  --color-sidebar-bg: #111827;
+  --color-sidebar-text: #9CA3AF;
+  --color-sidebar-active-bg: #374151;
+  --color-sidebar-active-text: #FFFFFF;
+  --color-text-primary: #1F2937;
+  --color-text-secondary: #6B7280;
+  --color-card-bg: #FFFFFF;
+  --color-border: #E5E7EB;
+  --color-primary: #4F46E5;
+  --color-primary-hover: #4338CA;
+  --color-status-confirmed: #10B981;
+  --color-status-pending: #F59E0B;
+  --color-status-confirmed-bg: #D1FAE5;
+  --color-status-pending-bg: #FEF3C7;
+
+
+  color: var(--color-text-primary);
+  background-color: var(--color-background);
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: 0;
+}
+
+/*:root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
 
   color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  color: #57564F;
+  background-color: #DDDAD0;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -65,4 +100,4 @@ button:focus-visible {
   button {
     background-color: #f9f9f9;
   }
-}
+}*/

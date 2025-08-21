@@ -4,7 +4,7 @@ import java.time.LocalDateTime;
 import java.util.UUID;
 
 import br.edu.ufop.web.ticket.sales.enums.EnumSalesType;
-import br.edu.ufop.web.ticket.sales.models.EventModel;
+import br.edu.ufop.web.ticket.sales.dtos.externals.users.UserDTO;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -28,6 +28,8 @@ public class SaleDTO {
 
     private LocalDateTime updatedAt;
 
-    private EventModel eventId;
+    private EventDTO event;
+
+    private UserDTO user;
 
 }

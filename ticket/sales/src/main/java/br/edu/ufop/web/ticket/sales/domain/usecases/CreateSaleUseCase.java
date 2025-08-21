@@ -3,7 +3,7 @@ package br.edu.ufop.web.ticket.sales.domain.usecases;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
-
+import br.edu.ufop.web.ticket.sales.repositories.IEventRepository;
 import br.edu.ufop.web.ticket.sales.domain.SaleDomain;
 import br.edu.ufop.web.ticket.sales.models.EventModel;
 import lombok.AllArgsConstructor;
@@ -14,6 +14,7 @@ import lombok.RequiredArgsConstructor;
 public class CreateSaleUseCase {
 
     SaleDomain saleDomain;
+    private final IEventRepository eventRepository;
 
     public void validate() {
 
@@ -25,7 +26,10 @@ public class CreateSaleUseCase {
 
     private void validateSaleDate() {
 
-        EventModel event = saleDomain.getEventId();
+        UUID eventId = saleDomain.getEvent();
+
+        EventModel event = eventRepository.findById(eventId)
+        .orElseThrow(() -> new UnsupportedOperationException("Evento não encontrado."));
         
         if (event == null) {
             throw new UnsupportedOperationException("O evento não está disponível para venda.");

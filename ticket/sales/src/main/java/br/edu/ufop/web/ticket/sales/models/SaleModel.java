@@ -4,9 +4,14 @@ package br.edu.ufop.web.ticket.sales.models;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import br.edu.ufop.web.ticket.sales.enums.EnumSalesType;
 import jakarta.persistence.Column;
+import jakarta.persistence.EnumType;
 import jakarta.persistence.Entity;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -42,6 +47,7 @@ public class SaleModel {
     @Column(columnDefinition = "TIMESTAMP")
     private LocalDateTime saleDate;
 
+    @Enumerated(EnumType.ORDINAL)
     @Column(nullable = true)
     private EnumSalesType saleStatus;
 
@@ -55,6 +61,7 @@ public class SaleModel {
     public void antesGravar() {
         this.createdAt = LocalDateTime.now();
         this.updatedAt = LocalDateTime.now();
+        this.saleDate = LocalDateTime.now();
     }
 
     @PreUpdate
@@ -63,9 +70,10 @@ public class SaleModel {
     }
 
    
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "event_id", nullable = false)
-    private EventModel eventId;
+    @JsonBackReference
+    private EventModel event;
 
 
 }

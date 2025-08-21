@@ -17,11 +17,11 @@ public class GatewayApiConfig {
     public RouteLocator gatewayRouter(RouteLocatorBuilder builder){
 
         return builder.routes()
-            .route("users-api", p -> p.path("/api/users").filters(f -> f.rewritePath("/api/users", "/users")).uri("lb://users-service"))
-            .route("users", p -> p.path("/users").uri("lb://users-service"))
-            .route("users-segment", p -> p.path("/users/**").uri("lb://users-service"))
+            //.route("users-api", p -> p.path("/api/users").filters(f -> f.rewritePath("/api/users", "/users")).uri("lb://users-service"))
+            .route("users", p -> p.path("/users/**").uri("lb://users-service"))
+            //.route("users-segment", p -> p.path("/users/**").uri("lb://users-service"))
             .route("sales", p -> p.path("/sales/**").uri("lb://sales-service"))
-            .route("sales", p -> p.path("/events/**").uri("lb://sales-service"))
+            .route("events", p -> p.path("/events/**").uri("lb://sales-service"))
             .route("notifications", p -> p.path("/notifications/**").uri("lb://notifications-service"))
             .route("frontend", p -> p.path("/**").uri(this.uriFrontendService))
             .build();

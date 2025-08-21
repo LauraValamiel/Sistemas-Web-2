@@ -1,8 +1,10 @@
 package br.edu.ufop.web.ticket.sales.service;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
 
@@ -24,12 +26,13 @@ public class EventService {
 
     public List<EventDTO> getAllEvents() {
 
-        List<EventModel> eventModelList = eventRepository.findAll();
+        List<EventModel> eventModelList = eventRepository.findAllWithSales();
 
         return eventModelList
             .stream()
+            .filter(Objects::nonNull)
             .map(EventConverter::toEventDTO)
-            .toList();
+            .collect(Collectors.toList());
     }
 
     public EventDTO getEventById(String eventId) {

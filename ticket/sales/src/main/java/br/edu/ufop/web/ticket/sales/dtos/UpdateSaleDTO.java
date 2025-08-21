@@ -17,6 +17,6 @@ public class UpdateSaleDTO {
 
     private UUID id;
 
-    private EnumSalesType saleStatus;
+    private Integer saleStatus;
 
 }

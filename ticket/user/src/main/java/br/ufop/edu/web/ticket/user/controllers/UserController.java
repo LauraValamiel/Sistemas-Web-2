@@ -1,7 +1,7 @@
 package br.ufop.edu.web.ticket.user.controllers;
 
 import java.util.List;
-
+import java.util.UUID;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -32,7 +32,7 @@ public class UserController {
         return ResponseEntity.ok("Service is running");
     }
 
-    @GetMapping
+    @GetMapping("/users-list")
     public ResponseEntity<List<SimpleUserRecordDTO>> getAllUsers() {
 
         List<SimpleUserRecordDTO> list =
@@ -42,24 +42,18 @@ public class UserController {
     }
 
     @PostMapping
-    public ResponseEntity<SimpleUserRecordDTO> 
-        createUser(@RequestBody 
-            CreateUserDTO createUserDTO) {
+    public ResponseEntity<SimpleUserRecordDTO> createUser(@RequestBody CreateUserDTO createUserDTO) {
         
         SimpleUserRecordDTO simpleUserRecordDTO = userService.createUser(createUserDTO);
         return ResponseEntity.ok(simpleUserRecordDTO);
     }
     
     @GetMapping("/{userId}")
-    public ResponseEntity<SimpleUserRecordDTO> getUserById(@PathVariable(value = "userId") String id) {
+    public ResponseEntity<SimpleUserRecordDTO> getUserById(@PathVariable("userId") UUID id) {
 
         SimpleUserRecordDTO simpleUserRecordDTO = userService.getUserById(id);
 
-        if(simpleUserRecordDTO == null){
-            return ResponseEntity.notFound().build();
-        }
-
-        return ResponseEntity.ok(simpleUserRecordDTO);
+        return simpleUserRecordDTO != null ? ResponseEntity.ok(simpleUserRecordDTO) : ResponseEntity.notFound().build();
 
     }
 

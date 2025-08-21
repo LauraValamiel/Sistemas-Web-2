@@ -1,0 +1,77 @@
+.layout-container {
+    display: flex;
+    min-height: 100vh;
+}
+
+.sidebar {
+    width: 250px;
+    background-color: var(--color-sidebar-bg);
+    color: var(--color-sidebar-text);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+}
+
+.sidebar-header h2 {
+    color: white;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.sidebar-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.nav-link {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 15px;
+    border-radius: 8px;
+    color: var(--color-sidebar-text);
+    text-decoration: none;
+    font-weight: 500;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.nav-link:hover {
+    background-color: var(--color-sidebar-active-bg);
+    color: var(--color-sidebar-active-text);
+}
+
+.nav-link.active {
+    background-color: var(--color-primary);
+    color: var(--color-sidebar-active-text);
+}
+
+.layout-content {
+    flex-grow: 1;
+    padding: 40px;
+    overflow-y: auto;
+}
+
+/* Estrutura geral da página */
+.page-container {
+    width: 100%;
+}
+
+.page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.page-header h1 {
+    font-size: 2rem;
+    margin: 0;
+}
+
+.page-header p {
+    color: var(--color-text-secondary);
+    margin: 0;
+    margin-top: 5px;
+}
